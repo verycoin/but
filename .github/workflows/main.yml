@@ -35,7 +35,7 @@ jobs:
         run: ./autogen.sh
         working-directory: ./ 
       - name: configure
-        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-w64-mingw32
+        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu
       - name: make 
         run: make
 
