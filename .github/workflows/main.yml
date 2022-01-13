@@ -5,10 +5,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,15 +28,15 @@ jobs:
       # dependencies
       - name: make depends
         working-directory: ./depends 
-        run: make
+        run: make CC_FOR_BUILD=x86_64-linux-gnu-gcc HOST=x86_64-w64-mingw32
         
       # core
-      - name: autogen
-        run: ./autogen.sh
-        working-directory: ./ 
-      - name: configure
-        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu
-      - name: make 
-        run: make
+#      - name: autogen
+#        run: ./autogen.sh
+#        working-directory: ./ 
+#      - name: configure
+#        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu
+#      - name: make 
+#        run: make
 
 
