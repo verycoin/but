@@ -42,7 +42,7 @@ jobs:
 #        run: ./autogen.sh
 #        working-directory: ./ 
 #      - name: configure
-#        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu
+#        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu --bindir=$GITHUB_WORKSPACE/dist --libdir=$GITHUB_WORKSPACE/dist/lib
 #      - name: make 
 #        run: make
 
