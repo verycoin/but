@@ -38,12 +38,24 @@ jobs:
         run: make CC_FOR_BUILD=x86_64-linux-gnu-gcc HOST=x86_64-w64-mingw32
         
       # core
-#      - name: autogen
-#        run: ./autogen.sh
-#        working-directory: ./ 
-#      - name: configure
-#        run: ./configure --prefix=$GITHUB_WORKSPACE/depends/x86_64-pc-linux-gnu --bindir=$GITHUB_WORKSPACE/dist --libdir=$GITHUB_WORKSPACE/dist/lib
-#      - name: make 
-#        run: make
+      - name: autogen
+        working-directory: ./ 
+        run: ./autogen.sh
+
+      - name: configure
+        run: ./configure  --disable-gui-tests --disable-tests --disable-bench --prefix=$GITHUB_WORKSPACE/depends/x86_64-w64-mingw32 --exec-prefix=$GITHUB_WORKSPACE/release
+      - name: make 
+        run: make && make install
+      - name: strip
+        run: strip $GITHUB_WORKSPACE/release/bin/* $GITHUB_WORKSPACE/release/lib/*.a
+        
+     # artifacts
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: release
+          path: $GITHUB_WORKSPACE/release
+  
+     
 
 
