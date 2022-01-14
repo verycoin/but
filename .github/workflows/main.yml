@@ -47,14 +47,14 @@ jobs:
       - name: make 
         run: make && make install
       - name: strip
-        run: strip $GITHUB_WORKSPACE/release/bin/* $GITHUB_WORKSPACE/release/lib/*.a
+        run: strip ./release/bin/* ./release/lib/*.a
         
      # artifacts
       - name: upload artifacts
         uses: actions/upload-artifact@v2.3.1
         with:
           name: release
-          path: $GITHUB_WORKSPACE/release/**/*
+          path: ./release/**/*
   
      
 
